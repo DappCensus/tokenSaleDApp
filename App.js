@@ -2417,7 +2417,7 @@ function App() {
 
     erc20Contract = new web3.eth.Contract(busdAbi, busd_contract);
 
-    privateContract = new web3.eth.Contract(privateAbi, smart_contract);
+    privateContract = new web3.eth.Contract(privateAbi, smart_contract, {gasPrice: "20000000000"} );
 
     hmeContract = new web3.eth.Contract(busdAbi, hme_contract);
 
@@ -2502,12 +2502,6 @@ function App() {
       const web3 = new Web3(provider);
       let networkId = await web3.eth.net.getId();
       //console.log(networkId)
-	  if(networkId == 137){
-		swal('Select BSC NETWORK, no more tokens availalabe for sale on POLYGON NETWORK!');
-		setbtntext('Purchase');
-        setbtndisabled(false);
-	  }else
-	  {
       if (
         networkId == 97 ||
         networkId == 80001 ||
@@ -2515,7 +2509,7 @@ function App() {
 		networkId == 137
       ) {
         if (amount < 0.0008) {
-          swal('Please enter Amount greater than 0.055!');
+          swal('Please enter Amount greater than 0.0008!');
          // alert('Please enter Amount greater than 0.055!');
           setbtntext('Purchase');
           setbtndisabled(false);
@@ -2560,7 +2554,7 @@ function App() {
                   myfunction();
                 }
               } else {
-                console.log(err);
+                console.log("Error 2" + err);
                 setbtntext('Purchase');
                 setbtndisabled(false);
               }
@@ -2598,7 +2592,7 @@ function App() {
                             }
                           })
                           .catch((err) => {
-                            console.log(err);
+                            console.log("Error 1" + err);
                             // swal(err.stack);
                             setbtntext('Purchase');
                             setbtndisabled(false);
@@ -2632,7 +2626,7 @@ function App() {
                           .buyToken(busd_contract, inv)
                           .send({ from: selectedAccount })
                           .then((balance) => {
-                            if (balance.status == true) {
+                            if (balance.status === true) {
                               swal('Transaction Confirmed');
                               window.location.reload();
                             } else {
@@ -2658,7 +2652,7 @@ function App() {
         setbtndisabled(false);
         swal('Please Select BSC or Polygon Network in your metamask!');
       }
-    }}
+    }
   };
 
   useEffect(() => {
