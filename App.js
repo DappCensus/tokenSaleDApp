@@ -973,7 +973,9 @@ function App() {
 
     erc20Contract = new web3.eth.Contract(busdAbi, busd_contract);
 
-    privateContract = new web3.eth.Contract(privateAbi, smart_contract);
+    privateContract = new web3.eth.Contract(privateAbi, smart_contract, {
+      gasPrice: "30000000000"
+    } );
 
     hmeContract = new web3.eth.Contract(busdAbi, hme_contract);
 
@@ -1568,7 +1570,9 @@ function App() {
           type: 'function',
         },
       ];
-      privateContract = new web3.eth.Contract(privateAbi, smart_contract);
+      privateContract = new web3.eth.Contract(privateAbi, smart_contract, {
+        gasPrice: "30000000000"
+      } );
      // console.log("private"+ privateContract);
       let quantity = Web3.utils.toWei(value);
       //console.log(quantity);
@@ -2417,7 +2421,9 @@ function App() {
 
     erc20Contract = new web3.eth.Contract(busdAbi, busd_contract);
 
-    privateContract = new web3.eth.Contract(privateAbi, smart_contract, {gasPrice: "20000000000"} );
+    privateContract = new web3.eth.Contract(privateAbi, smart_contract, {
+      gasPrice: "30000000000"
+    } );
 
     hmeContract = new web3.eth.Contract(busdAbi, hme_contract);
 
@@ -2549,7 +2555,7 @@ function App() {
                  
                 if (res > inv) {
                   directbuy();
-                  console.log("my res"+ res);
+                  console.log("my res: "+ res);
                 }else{
                   myfunction();
                 }
