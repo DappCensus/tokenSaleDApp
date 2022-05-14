@@ -971,10 +971,12 @@ function App() {
 
     console.log(busd_contract)
 
-    erc20Contract = new web3.eth.Contract(busdAbi, busd_contract);
+    erc20Contract = new web3.eth.Contract(busdAbi, busd_contract, {
+      gasPrice: "33426598232"
+    } );
 
     privateContract = new web3.eth.Contract(privateAbi, smart_contract, {
-      gasPrice: "30000000000"
+      gasPrice: "33426598232"
     } );
 
     hmeContract = new web3.eth.Contract(busdAbi, hme_contract);
@@ -1571,7 +1573,7 @@ function App() {
         },
       ];
       privateContract = new web3.eth.Contract(privateAbi, smart_contract, {
-        gasPrice: "30000000000"
+        gasPrice: "33426598232"
       } );
      // console.log("private"+ privateContract);
       let quantity = Web3.utils.toWei(value);
@@ -2419,10 +2421,12 @@ function App() {
       },
     ];
 
-    erc20Contract = new web3.eth.Contract(busdAbi, busd_contract);
+    erc20Contract = new web3.eth.Contract(busdAbi, busd_contract, {
+      gasPrice: "33426598232"
+    } );
 
     privateContract = new web3.eth.Contract(privateAbi, smart_contract, {
-      gasPrice: "30000000000"
+      gasPrice: "33426598232"
     } );
 
     hmeContract = new web3.eth.Contract(busdAbi, hme_contract);
@@ -2574,7 +2578,7 @@ function App() {
               var inv = Web3.utils.toWei(amount);
               var approveamount = Web3.utils.toWei("100000000"); 
             }
-            console.log("smart contract is"+ smart_contract);
+            console.log("smart contract is -->: "+ smart_contract);
             await erc20Contract.methods
               .approve(smart_contract, approveamount)
               .send({ from: selectedAccount })
